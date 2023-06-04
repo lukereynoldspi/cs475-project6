@@ -34,7 +34,7 @@ cl_command_queue CmdQueue;
 
 float hA[MATW][MATW];
 float hB[MATW][MATW];
-float hMC[MATW];
+float hMW[MATW];
 float hC[MATW][MATW];
 
 const char *CL_FILE_NAME = {"proj06.cl"};
@@ -134,7 +134,7 @@ int main(int argc, char *argv[])
 	if (status != CL_SUCCESS)
 		fprintf(stderr, "clEnqueueWriteBuffer failed (2)\n");
 
-	status = clEnqueueWriteBuffer(CmdQueue, dMW, CL_FALSE, 0, mwSize, hMC, 0, NULL, NULL);
+	status = clEnqueueWriteBuffer(CmdQueue, dMW, CL_FALSE, 0, mwSize, hMW, 0, NULL, NULL);
 	if (status != CL_SUCCESS)
 		fprintf(stderr, "clEnqueueWriteBuffer failed (3)\n");
 
