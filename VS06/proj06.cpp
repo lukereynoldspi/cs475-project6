@@ -244,11 +244,11 @@ int main(int argc, char *argv[])
 #endif
 
 	FILE *bruh;
-    bruh = fopen("proj06data.csv", "w+");
+    bruh = fopen("proj06data.csv", "a+");
 
 	fprintf(bruh, "%6d x %6d, %4d x %4d, %10.2lf\n",
 			MATW, MATW, LOCALSIZE, LOCALSIZE, (double)MATW * (double)MATW * (double)MATW / (time1 - time0) / 1000000000.);
-
+	fclose(bruh);
 
 	// 13. clean everything up:
 
