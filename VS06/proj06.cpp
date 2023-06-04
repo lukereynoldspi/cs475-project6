@@ -115,7 +115,7 @@ int main(int argc, char *argv[])
 	if (status != CL_SUCCESS)
 		fprintf(stderr, "clCreateBuffer failed (2)\n");
 
-	cl_mem dMW = clCreateBuffer(Context, CL_MEM_READ_ONLY, mwSize, NULL, &status);
+	cl_mem dMW = clCreateBuffer(Context, CL_MEM_WRITE_ONLY, mwSize, NULL, &status);
 	if (status != CL_SUCCESS)
 		fprintf(stderr, "clCreateBuffer failed (3)\n");
 
@@ -129,17 +129,13 @@ int main(int argc, char *argv[])
 	if (status != CL_SUCCESS)
 		fprintf(stderr, "clEnqueueWriteBuffer failed (1)\n");
 
-	status = clEnqueueWriteBuffer(CmdQueue, dB, CL_FALSE, 0, bSize, hA, 0, NULL, NULL);
+	status = clEnqueueWriteBuffer(CmdQueue, dB, CL_FALSE, 0, bSize, hB, 0, NULL, NULL);
 	if (status != CL_SUCCESS)
 		fprintf(stderr, "clEnqueueWriteBuffer failed (2)\n");
 
 	status = clEnqueueWriteBuffer(CmdQueue, dMW, CL_FALSE, 0, mwSize, hA, 0, NULL, NULL);
 	if (status != CL_SUCCESS)
 		fprintf(stderr, "clEnqueueWriteBuffer failed (3)\n");
-
-	status = clEnqueueWriteBuffer(CmdQueue, dC, CL_FALSE, 0, cSize, hA, 0, NULL, NULL);
-	if (status != CL_SUCCESS)
-		fprintf(stderr, "clEnqueueWriteBuffer failed (4)\n");
 
 	Wait(CmdQueue);
 
