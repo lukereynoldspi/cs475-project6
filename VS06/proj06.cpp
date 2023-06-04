@@ -243,6 +243,13 @@ int main(int argc, char *argv[])
 			MATW, MATW, LOCALSIZE, LOCALSIZE, (double)MATW * (double)MATW * (double)MATW / (time1 - time0) / 1000000000.);
 #endif
 
+	FILE *fp;
+    fp = fopen("proj06data.csv", "w+");
+
+	fprintf(fp, "%6d x %6d, %4d x %4d, %10.2lf\n",
+			MATW, MATW, LOCALSIZE, LOCALSIZE, (double)MATW * (double)MATW * (double)MATW / (time1 - time0) / 1000000000.);
+
+
 	// 13. clean everything up:
 
 	clReleaseKernel(Kernel);
